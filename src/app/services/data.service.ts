@@ -1,3 +1,4 @@
+import { Student } from './../core/model/student';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Injectable } from '@angular/core';
 import { Teacher } from '../core/model/teacher';
@@ -23,6 +24,18 @@ export class DataService {
 				console.log('Document successfully updated!');
 			});
 	}
+	
+	updateStudentProfile(idUser: string, student: Student) {
+		return this.afStoreSv
+			.collection('user')
+			.doc(idUser)
+			.update({
+				email: student.$email
+			})
+			.then(function() {
+				console.log('Document successfully updated!');
+			});
+	}
 
 	addTeacherId(idUser: string) {
 		return this.afStoreSv.collection('teachers').doc(idUser).set(idUser);
@@ -34,8 +47,9 @@ export class DataService {
 
 	isTeacher(idUser: string) {
 		return this.afStoreSv
-			.collection('teachers', ref => ref.where('idUser', '==', idUser))
-			.get().toPromise()
+			.collection('teachers', (ref) => ref.where('idUser', '==', idUser))
+			.get()
+			.toPromise()
 			.then(function(querySnapshot) {
 				querySnapshot.forEach(function(doc) {
 					// doc.data() is never undefined for query doc snapshots
