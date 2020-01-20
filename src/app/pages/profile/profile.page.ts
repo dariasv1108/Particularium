@@ -1,3 +1,5 @@
+import { Student } from './../../core/model/student';
+import { Teacher } from './../../core/model/teacher';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
@@ -11,7 +13,6 @@ import { User } from 'src/app/core/model/user';
 })
 export class ProfilePage implements OnInit {
 	private route: any = '/login';
-	private user: User = new User();
 
 	constructor(private routesv: Router, private afAuth: AuthService, private afStoreSv: DataService) {}
 
@@ -37,11 +38,14 @@ export class ProfilePage implements OnInit {
 		this.routesv.navigateByUrl(this.route);
 	}
 
-	async getUser() {
-		let user = await this.afStoreSv.getUser(this.afAuth.getAuth().currentUser.uid);
+	async getProfileUser() {
+		let user = await this.afStoreSv.getProfile(this.afAuth.getAuth().currentUser.uid);
 		console.log(user);
 	}
 	async addUserProfile() {
-		await this.afStoreSv.addProfile(this.afAuth.getAuth().currentUser.uid, this.user);
+		//await this.afStoreSv.addUserProfile(this.afAuth.getAuth().currentUser.uid, this.user);
+	}
+	async test(){
+		//await this.afStoreSv.updateTeacherProfile(this.afAuth.getAuth().currentUser.uid, this.user);
 	}
 }

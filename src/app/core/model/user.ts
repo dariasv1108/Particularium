@@ -9,13 +9,7 @@ export class User {
     constructor() {
     }
 
-    /**
-     * Getter $id
-     * @return {string}
-     */
-    public get $id(): string {
-        return this.id;
-    }
+    
 
     /**
      * Getter $name
@@ -57,14 +51,7 @@ export class User {
         return this.email;
     }
 
-    /**
-     * Setter $id
-     * @param {string} value
-     */
-    public set $id(value: string) {
-        this.id = value;
-    }
-
+    
     /**
      * Setter $name
      * @param {string} value

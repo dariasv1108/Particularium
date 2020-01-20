@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 	providedIn: 'root'
 })
 export class AuthService {
+	
 	private user: User = {};
 
 	constructor(private afAuth: AngularFireAuth) {}
@@ -15,12 +16,15 @@ export class AuthService {
 		}
 		return this.afAuth.auth.createUserWithEmailAndPassword(this.user.email, this.user.password);
 	}
+
 	login() {
 		return this.afAuth.auth.signInWithEmailAndPassword(this.user.email, this.user.password);
 	}
+
 	logOut() {
 		return this.afAuth.auth.signOut();
 	}
+	
 	sendVerificationEmail() {
 		if (!this.isUserVerified()) {
 			return this.afAuth.auth.currentUser.sendEmailVerification();
@@ -32,6 +36,7 @@ export class AuthService {
 	getAuth() {
 		return this.afAuth.auth;
 	}
+
 	deleteUser() {
 		if (this.afAuth.auth.currentUser.providerId == null) {
 			console.log('This user doesnt exits already');

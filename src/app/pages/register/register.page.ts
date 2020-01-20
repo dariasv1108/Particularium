@@ -21,13 +21,13 @@ export class RegisterPage implements OnInit {
 	async register() {
 		try {
 			if (await this.afAuth.register()) {
-				this.setUser();
+				//this.setUser();
 			}
 		} catch (err) {
 			console.dir(err);
 		}
 	}
-	private setUser() {
-		this.afStore.addProfile(this.afAuth.getAuth().currentUser.uid,this.afAuth.getUser());
-	}
+	//private setUser() {
+	//	this.afStore.addProfile(this.afAuth.getAuth().currentUser.uid,this.afAuth.getUser());
+	//}
 }
