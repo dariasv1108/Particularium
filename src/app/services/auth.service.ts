@@ -5,16 +5,18 @@ import { Injectable } from '@angular/core';
 	providedIn: 'root'
 })
 export class AuthService {
+	private user: User = {};
+
 	constructor(private afAuth: AngularFireAuth) {}
 
-	register(user: User) {
-		if (user.password !== user.cpassword) {
+	register() {
+		if (this.user.password !== this.user.cpassword) {
 			return console.error('Password dont match');
 		}
-		return this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password);
+		return this.afAuth.auth.createUserWithEmailAndPassword(this.user.email, this.user.password);
 	}
-	login(user: User) {
-		return this.afAuth.auth.signInWithEmailAndPassword(user.email, user.password);
+	login() {
+		return this.afAuth.auth.signInWithEmailAndPassword(this.user.email, this.user.password);
 	}
 	logOut() {
 		return this.afAuth.auth.signOut();
@@ -32,8 +34,14 @@ export class AuthService {
 	}
 	deleteUser() {
 		if (this.afAuth.auth.currentUser.providerId == null) {
-			 console.log('This user doesnt exits already');
+			console.log('This user doesnt exits already');
 		}
 		return this.afAuth.auth.currentUser.delete();
+	}
+	setUser(user) {
+		this.user = user;
+	}
+	getUser() {
+		return this.user;
 	}
 }
