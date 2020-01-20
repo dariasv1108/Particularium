@@ -1,5 +1,4 @@
-class User {
-    private id: string;
+export class User {
     private name: string;
     private user: string;
     private password: string;
@@ -7,13 +6,7 @@ class User {
     private email: string;
 
 
-    constructor($id: string, $name: string, $user: string, $password: string, $location: string, $email: string) {
-        this.id = $id;
-        this.name = $name;
-        this.user = $user;
-        this.password = $password;
-        this.location = $location;
-        this.email = $email;
+    constructor() {
     }
 
     /**

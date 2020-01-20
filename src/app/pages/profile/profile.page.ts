@@ -2,6 +2,7 @@ import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { DataService } from 'src/app/services/data.service';
+import { User } from 'src/app/core/model/user';
 
 @Component({
 	selector: 'app-profile',
@@ -10,6 +11,7 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class ProfilePage implements OnInit {
 	private route: any = '/login';
+	private user: User = new User();
 
 	constructor(private routesv: Router, private afAuth: AuthService, private afStoreSv: DataService) {}
 
@@ -38,5 +40,8 @@ export class ProfilePage implements OnInit {
 	async getUser() {
 		let user = await this.afStoreSv.getUser(this.afAuth.getAuth().currentUser.uid);
 		console.log(user);
+	}
+	async addUserProfile() {
+		await this.afStoreSv.addProfile(this.afAuth.getAuth().currentUser.uid, this.user);
 	}
 }

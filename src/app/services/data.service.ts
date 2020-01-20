@@ -1,7 +1,6 @@
-import { User } from './../interfaces/User';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators';
+import { User } from '../core/model/user';
 
 @Injectable({
 	providedIn: 'root'
@@ -9,7 +8,7 @@ import { map } from 'rxjs/operators';
 export class DataService {
 	constructor(private afStoreSv: AngularFirestore) {}
 	addProfile(idUser: string, user: User) {
-		return this.afStoreSv.collection('user').doc(idUser).set(user);
+		return this.afStoreSv.collection('user').doc(idUser).set(Object.assign({}, user));
 	}
 	getUser(idUser: string) {
 		let user = this.afStoreSv.collection('user').doc(idUser).get();
