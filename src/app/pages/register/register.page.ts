@@ -18,16 +18,7 @@ export class RegisterPage implements OnInit {
 
 	ngOnInit() {}
 
-	async register() {
-		try {
-			if (await this.afAuth.register()) {
-				//this.setUser();
-			}
-		} catch (err) {
-			console.dir(err);
-		}
+	register(){
+		//Llamada al metodo del provider de david(signUp)
 	}
-	//private setUser() {
-	//	this.afStore.addProfile(this.afAuth.getAuth().currentUser.uid,this.afAuth.getUser());
-	//}
 }
