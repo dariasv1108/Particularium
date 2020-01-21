@@ -1,4 +1,4 @@
-import { User } from './../interfaces/User';
+import { User } from '../../interfaces/User';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Injectable } from '@angular/core';
 @Injectable({

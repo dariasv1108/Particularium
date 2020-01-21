@@ -1,8 +1,8 @@
+import { Teacher } from './../../core/model/teacher';
 
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Injectable } from '@angular/core';
-import { Teacher } from '../core/model/teacher';
-import { Student } from '../core/model/student';
+import { Student } from './../../core/model/student';
 
 @Injectable({
 	providedIn: 'root'

@@ -1,8 +1,8 @@
 import { Teacher } from './../../core/model/teacher';
 import { Student } from './../../core/model/student';
 import { Injectable } from '@angular/core';
-import { AuthService } from 'src/app/services/auth.service';
-import { DataService } from 'src/app/services/data.service';
+import { AuthService } from 'src/app/servers/auth/auth.service';
+import { DataService } from 'src/app/servers/data/data.service';
 import { Router } from '@angular/router';
 import { User } from 'src/app/interfaces/User';
 
@@ -33,7 +33,7 @@ export class SingUpServiceService {
 	}
 	async addTeacher(teacher: Teacher) {
 		this.afAuth.setUser(this.userReg);
-		return await this.afStore.addUserProfile(this.afAuth.getAuth().currentUser.uid, teache).then(() => {
+		return await this.afStore.addUserProfile(this.afAuth.getAuth().currentUser.uid, teacher).then(() => {
 			this.routesv.navigateByUrl('/logged-in');//Siguiente registro
 		}).catch((err) => {
 			console.log(err);//Alerta
