@@ -12,8 +12,9 @@ export class AuthService {
 
 	register() {
 		if (this.user.password !== this.user.cpassword) {
-			return console.error('Password dont match');
+			console.error('Password dont match');
 		}
+		console.log(this.user.email)
 		return this.afAuth.auth.createUserWithEmailAndPassword(this.user.email, this.user.password);
 	}
 
