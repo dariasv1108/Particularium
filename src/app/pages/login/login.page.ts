@@ -11,5 +11,7 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
   }
-
+login(){
+  //Llamada al metodo del provider de david(login)
+}
 }
