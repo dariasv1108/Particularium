@@ -1,0 +1,38 @@
+.encabezado{
+    text-align: center;
+    border: 2px double black;
+   
+}
+.contenedorBotones{
+    margin-top: 20px;
+    text-align: center;
+    letter-spacing: 0.25em;
+    font-size: 24px;
+    padding: 4px 10px;
+   
+    background-color: #0186af;
+   
+   
+}
+.buttonInicioLogin{
+    width: 70%;
+    background: #003d99;
+    border: 2px double white;
+}
+.buttonInicioSignUp{
+    width: 70%;
+    background: #fff47e;
+    border: 2px double white;
+    color: black;
+}
+
+.imagenParticularium{
+    width: 32%;
+   
+}
+
+.footer{
+    font-size: 12.5px;
+    text-align: center;
+     color: #D1D1D1;
+}
