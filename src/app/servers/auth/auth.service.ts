@@ -37,7 +37,9 @@ export class AuthService {
 	getAuth() {
 		return this.afAuth.auth;
 	}
-
+	getCurrentUserUid(){
+		return this.afAuth.auth.currentUser.uid;
+	}
 	deleteUser() {
 		if (this.afAuth.auth.currentUser.providerId == null) {
 			console.log('This user doesnt exits already');
