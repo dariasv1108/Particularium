@@ -16,6 +16,10 @@ const routes: Routes = [
 	  path: 'tipo-usuario',
 	  loadChildren: () => import('./pages/tipo-usuario/tipo-usuario.module').then( m => m.TipoUsuarioPageModule)
 	},
+  {
+    path: 'logged-in',
+    loadChildren: () => import('./pages/logged-in/logged-in.module').then( m => m.LoggedInPageModule)
+  },
   
   ];
   

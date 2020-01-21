@@ -1,14 +1,15 @@
+import { Teacher } from './../../core/model/teacher';
 
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Injectable } from '@angular/core';
-import { Teacher } from '../core/model/teacher';
-import { Student } from '../core/model/student';
+import { Student } from './../../core/model/student';
 
 @Injectable({
 	providedIn: 'root'
 })
 export class DataService {
-	constructor(private afStoreSv: AngularFirestore) {}
+	constructor(private afStoreSv: AngularFirestore) { }
+
 	addUserProfile(idUser: string, user: Teacher | Student) {
 		return this.afStoreSv.collection('user').doc(idUser).set(Object.assign({}, user));
 	}
@@ -20,11 +21,11 @@ export class DataService {
 			.update({
 				email: teacher.$email
 			})
-			.then(function() {
+			.then(function () {
 				console.log('Document successfully updated!');
 			});
 	}
-	
+
 	updateStudentProfile(idUser: string, student: Student) {
 		return this.afStoreSv
 			.collection('user')
@@ -32,7 +33,7 @@ export class DataService {
 			.update({
 				email: student.$email
 			})
-			.then(function() {
+			.then(function () {
 				console.log('Document successfully updated!');
 			});
 	}
@@ -50,13 +51,13 @@ export class DataService {
 			.collection('teachers', (ref) => ref.where('idUser', '==', idUser))
 			.get()
 			.toPromise()
-			.then(function(querySnapshot) {
-				querySnapshot.forEach(function(doc) {
+			.then(function (querySnapshot) {
+				querySnapshot.forEach(function (doc) {
 					// doc.data() is never undefined for query doc snapshots
 					return true;
 				});
 			})
-			.catch(function(error) {
+			.catch(function (error) {
 				return false;
 			});
 	}
@@ -74,7 +75,7 @@ export class DataService {
 					console.log('No such document!');
 				}
 			})
-			.catch(function(error) {
+			.catch(function (error) {
 				console.log('Error getting document:', error);
 			});
 	}

@@ -1,4 +1,4 @@
-import { User } from './../interfaces/User';
+import { User } from '../../interfaces/User';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Injectable } from '@angular/core';
 @Injectable({
@@ -12,8 +12,9 @@ export class AuthService {
 
 	register() {
 		if (this.user.password !== this.user.cpassword) {
-			return console.error('Password dont match');
+			console.error('Password dont match');
 		}
+		console.log(this.user.email)
 		return this.afAuth.auth.createUserWithEmailAndPassword(this.user.email, this.user.password);
 	}
 
@@ -36,7 +37,9 @@ export class AuthService {
 	getAuth() {
 		return this.afAuth.auth;
 	}
-
+	getCurrentUserUid(){
+		return this.afAuth.auth.currentUser.uid;
+	}
 	deleteUser() {
 		if (this.afAuth.auth.currentUser.providerId == null) {
 			console.log('This user doesnt exits already');

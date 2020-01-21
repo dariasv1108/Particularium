@@ -23,19 +23,19 @@
   <ion-list >
     <ion-item class="camposFormulario">
       <ion-label  position="floting">Email: </ion-label>
-      <ion-input type="text" [(ngModel)]="email"></ion-input>
+      <ion-input type="text" [(ngModel)]="userReg.email"></ion-input>
     </ion-item>
    
     <ion-item class="camposFormulario">
       <ion-label position="floting">Password: </ion-label>
-      <ion-input type="password" [(ngModel)]="password"></ion-input>
+      <ion-input type="password" [(ngModel)]="userReg.password"></ion-input>
     </ion-item>
 
     <ion-item class="camposFormulario">
       <ion-label position="floting">Confirm password : </ion-label>
-      <ion-input type="password" [(ngModel)]="confirmPassword"></ion-input>
+      <ion-input type="password" [(ngModel)]="userReg.cpassword"></ion-input>
     </ion-item>
     </ion-list>
-    <ion-button color="#fff47e" class="buttonSignUp" routerLink='/tipo-usuario'>SignUp</ion-button>
+    <ion-button color="#fff47e" class="buttonSignUp" (click)="registrar()" >SignUp</ion-button>
   </ion-content>
   
